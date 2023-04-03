@@ -1,8 +1,8 @@
 var userFormEl = document.querySelector('#city-form');
 // var languageButtonsEl = document.querySelector('#language-buttons');
 var nameInputEl = document.querySelector('#cityname');
-var repoContainerEl = document.querySelector('#weather-container');
-var repoSearchTerm = document.querySelector('#weather-search-term');
+var WeatherEl = document.querySelector('#weather-container');
+var weatherSearchTerm = document.querySelector('#weather-search-term');
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
@@ -19,31 +19,31 @@ var formSubmitHandler = function (event) {
   }
 };
 
-var buttonClickHandler = function (event) {
-  var language = event.target.getAttribute('data-language');
+// var buttonClickHandler = function (event) {
+//   var language = event.target.getAttribute('data-language');
 
-  if (language) {
-    getFeaturedRepos(language);
+//   if (language) {
+//     getFeaturedRepos(language);
 
-    repoContainerEl.textContent = '';
-  }
-};
+//     repoContainerEl.textContent = '';
+//   }
+// };
 
-var getUserRepos = function (user) {
-  var apiUrl = 'https://api.github.com/users/' + user + '/repos';
+var getCityWeather = function (city) {
+  var apiUrl = 'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}';
 
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayRepos(data, user);
+          displayRepos(data, city);
         });
       } else {
         alert('Error: ' + response.statusText);
       }
     })
     .catch(function (error) {
-      alert('Unable to connect to GitHub');
+      alert('Unable to connect to weather');
     });
 };
 
@@ -61,16 +61,16 @@ var getFeaturedRepos = function (language) {
   });
 };
 
-var displayRepos = function (repos, searchTerm) {
-  if (repos.length === 0) {
-    repoContainerEl.textContent = 'No repositories found.';
+var displayweather = function (weather, searchTerm) {
+  if (weather.length === 0) {
+    repoContainerEl.textContent = 'No Weather found found.';
     return;
   }
 
-  repoSearchTerm.textContent = searchTerm;
+  weatherSearchTerm.textContent = searchTerm;
 
-  for (var i = 0; i < repos.length; i++) {
-    var repoName = repos[i].owner.login + '/' + repos[i].name;
+  for (var i = 0; i < weather.length; i++) {
+    var repoName = weather[i].owner.login + '/' + weather[i].name;
 
     var repoEl = document.createElement('div');
     repoEl.classList = 'list-item flex-row justify-space-between align-center';
@@ -97,4 +97,4 @@ var displayRepos = function (repos, searchTerm) {
 };
 
 userFormEl.addEventListener('submit', formSubmitHandler);
-languageButtonsEl.addEventListener('click', buttonClickHandler);
+// languageButtonsEl.addEventListener('click', buttonClickHandler);
