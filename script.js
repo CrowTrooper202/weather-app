@@ -7,12 +7,12 @@ var weatherSearchTerm = document.querySelector('#weather-search-term');
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
-  var username = nameInputEl.value.trim();
+  var city = nameInputEl.value.trim();
 
-  if (username) {
-    getUserRepos(username);
+  if (city) {
+    getCityWeather(city);
 
-    repoContainerEl.textContent = '';
+    WeatherEl.textContent = '';
     nameInputEl.value = '';
   } else {
     alert('Please enter a city');
@@ -28,9 +28,10 @@ var formSubmitHandler = function (event) {
 //     repoContainerEl.textContent = '';
 //   }
 // };
+var key = '301252a2716c4ab44bf8bb0c50a5efeb'
 
 var getCityWeather = function (city) {
-  var apiUrl = 'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}';
+  var apiUrl = "api.openweathermap.org/data/2.5/forecast?q=" + {nameInputEl} + "&appid=" + {key};
 
   fetch(apiUrl)
     .then(function (response) {
