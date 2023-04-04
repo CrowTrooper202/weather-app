@@ -19,14 +19,14 @@
 ## Installation
 
 
-[Weather Application](https://crowtrooper202.github.io/work-day-scheduler/)
+[Weather Application](https://crowtrooper202.github.io/weather-app/)
 
 
 ## Usage
 
 the page uses a serach function and an open weather API to allow the user to see both current and a 5 day projection of the weather of a city of thier choosing.
 
-![weather application](./pictures/day-scheduler.PNG)
+![weather application](./picture/Weather%20screen%20shot.PNG)
 
 
 
