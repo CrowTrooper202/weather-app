@@ -1,5 +1,5 @@
 # weather-app
-# work-day-scheduler
+# Weather Application
 
 ## Description
 
