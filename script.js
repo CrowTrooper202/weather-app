@@ -19,18 +19,11 @@ var formSubmitHandler = function (event) {
   }
 };
 
-// var buttonClickHandler = function (event) {
-//   var language = event.target.getAttribute('data-language');
 
-//   if (language) {
-//     getFeaturedRepos(language);
-
-//     repoContainerEl.textContent = '';
-//   }
-// };
-var key = '301252a2716c4ab44bf8bb0c50a5efeb'
+// var key = '301252a2716c4ab44bf8bb0c50a5efeb'
 
 var getCityWeather = function (city) {
+    var key = '301252a2716c4ab44bf8bb0c50a5efeb'
   var apiUrl = "api.openweathermap.org/data/2.5/forecast?q=" + {nameInputEl} + "&appid=" + {key};
 
   fetch(apiUrl)
@@ -48,19 +41,15 @@ var getCityWeather = function (city) {
     });
 };
 
-var getFeaturedRepos = function (language) {
-  var apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=help-wanted-issues';
-
-  fetch(apiUrl).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (data) {
-        displayRepos(data.items, language);
-      });
-    } else {
-      alert('Error: ' + response.statusText);
+function renderLastCity() {
+    var city = localStorage.getItem("city");
+  
+    if (!email) {
+      return;
     }
-  });
-};
+  
+    weatherSearchTerm.textContent = city;
+  }
 
 var displayweather = function (weather, searchTerm) {
   if (weather.length === 0) {
@@ -98,4 +87,17 @@ var displayweather = function (weather, searchTerm) {
 };
 
 userFormEl.addEventListener('submit', formSubmitHandler);
-// languageButtonsEl.addEventListener('click', buttonClickHandler);
+userFormEl.addEventListener('submit', function(event){
+    event.preventDefault
+
+    var city = document.querySelector("#cityname").valu;
+
+    if (city === ''){
+        alert("error")
+    } else {
+        alert("success")
+    }
+
+    localStorage.setItem("city", city)
+    renderLastCity();
+});
