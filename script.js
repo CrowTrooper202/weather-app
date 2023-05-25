@@ -110,8 +110,8 @@ var getCityforecast = function (lat, lon) {
 
             document.getElementById('5dayWeather').append(temp)
             document.getElementById('5dayWeather').append(humidity)
-            document.getElementById('forecast-container').append(condition)
-            document.getElementById('forecast-container').append(wind)
+            document.getElementById('5dayWeather').append(condition)
+            document.getElementById('5dayWeather').append(wind)
           }
 
 
