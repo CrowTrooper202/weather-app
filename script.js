@@ -99,11 +99,19 @@ var getCityforecast = function (lat, lon) {
             var humidity = document.createElement('h3')
             humidity.textContent = 'humidity: ' + data.list[i].main.humidity;
 
+            var condition = document.createElement('h3')
+            condition.textContent = 'humidity: ' + data.list[i].weather.main;
+
+            var humidity = document.createElement('h3')
+            humidity.textContent = 'humidity: ' + data.list[i].wind.speed;
+
 
 
 
             document.getElementById('5dayWeather').append(temp)
             document.getElementById('5dayWeather').append(humidity)
+            document.getElementById('forecast-container').append(condition)
+            document.getElementById('forecast-container').append(wind)
           }
 
 
